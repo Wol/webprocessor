@@ -2,19 +2,19 @@
 #ifndef LOGICLEVEL_H
 #define LOGICLEVEL_H
 
-#include "../Gate.h"
+#include "../CircuitItem.h"
 #include "../Pin.h"
 
-class LogicLevel : public Gate {
+class LogicLevel : public CircuitItem {
 
 public:
     explicit LogicLevel(std::string  name, CircuitItem *parent, uint8_t size, int direction);
 
-    void update(EventLoop &eventLoop) override;
+    void update() override;
 
     Pin IO;
 
-    void setOutputValue(EventLoop &eventLoop, BusValue i);
+    void setOutputValue(BusValue i);
 
     BusValue getInputValue();
 

@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Processor.h"
-#include "EventLoop.h"
 
 int main() {
 
@@ -24,7 +23,7 @@ int main() {
 
           uint8_t expected = (i) + ( sub ? -1 : 1) * (enable_b ? j : 1);
 
-          if(expected != p.getSumOutput()){
+          if(true || (expected != p.getSumOutput())){
             std::cout << " " << i << " " << (sub == 0 ? "+" : "-") << " " << (enable_b ? j : 1) << " = " << p.getSumOutput()  << " " << (expected == p.getSumOutput()) << "\n";
             Circuit::debugAllItems();
           }

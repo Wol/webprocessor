@@ -2,15 +2,16 @@
 #ifndef XOR_H
 #define XOR_H
 
-#include "../Gate.h"
+#include "../CircuitItem.h"
+#include "../Connection.h"
 
 
-class XOr : public Gate {
+class XOr : public CircuitItem {
 
 public:
     XOr(std::string  name, CircuitItem *parent);
 
-    void update(EventLoop &eventLoop) override;
+    void update() override;
 
     std::string status() override;
 

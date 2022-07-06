@@ -3,7 +3,6 @@
 #include <iostream>
 #include "Bus.h"
 #include "Connection.h"
-#include "EventLoop.h"
 #include "Pin.h"
 
 BusValue Bus::value() const {
@@ -20,7 +19,7 @@ void Bus::addConnection(Connection *connector) {
 
 
 
-void Bus::update(EventLoop &eventLoop) {
+void Bus::update() {
 
   // Loop through all the input connections to determine value
 
@@ -75,7 +74,7 @@ void Bus::update(EventLoop &eventLoop) {
   // If the value has changed, mark the target gates as needing recalculating.
   for(auto connector : m_connections) {
     if(connector->direction() == Connection::Input) {
-      eventLoop.addGateToRecalculate(connector->gate());
+      connector->parent()->needsRecalculating();
     }
   }
 

@@ -19,8 +19,11 @@ public:
 
     void enableDebug();
 
+    void needsRecalculating();
+
 
     virtual std::string status();
+    virtual void update();
 
 protected:
 
@@ -29,10 +32,6 @@ protected:
     CircuitItem *m_parent = nullptr;
 
     bool m_debug = false;
-
-private:
-
-
 
 };
 

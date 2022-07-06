@@ -2,15 +2,16 @@
 #ifndef AND_H
 #define AND_H
 
-#include "../Gate.h"
+#include "../CircuitItem.h"
+#include "../Connection.h"
 
 
-class And : public Gate {
+class And : public CircuitItem {
 
 public:
     And(std::string  name, CircuitItem *parent);
 
-    void update(EventLoop &eventLoop) override;
+    void update() override;
 
 public:
 

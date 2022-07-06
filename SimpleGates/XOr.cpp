@@ -1,17 +1,18 @@
 
 #include "XOr.h"
+#include "../Connection.h"
 
 XOr::XOr(std::string  name, CircuitItem *parent) :
-        Gate(name, parent),
-        A(this, 1, Connection::Input, "A"),
-        B(this, 1, Connection::Input, "B"),
-        Out(this, 1, Connection::Output, "Out") {
+  CircuitItem(name, parent),
+  A("A", this, 1, Connection::Input),
+  B("B", this, 1, Connection::Input),
+  Out("Out", this, 1, Connection::Output) {
 
 
 }
 
-void XOr::update(EventLoop &eventLoop) {
-  Out.setOutputValue(eventLoop, A.getBusValue() ^ B.getBusValue());
+void XOr::update() {
+  Out.setOutputValue(A.getBusValue() ^ B.getBusValue());
 }
 
 std::string XOr::status()

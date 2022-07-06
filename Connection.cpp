@@ -3,11 +3,10 @@
 #include <cassert>
 #include <bitset>
 #include "Connection.h"
-#include "EventLoop.h"
+#include "Bus.h"
 
-
-Connection::Connection(Gate *gate, uint8_t size, int direction, std::string name) :
-  m_gate(gate), m_size(size), m_direction(direction), m_bit_offset(0), CircuitItem(name, gate) {
+Connection::Connection(std::string name, CircuitItem *parent, uint8_t size, int direction) :
+  m_size(size), m_direction(direction), m_bit_offset(0), CircuitItem(name, parent) {
 
 }
 
@@ -35,12 +34,12 @@ BusValue Connection::applyOutputValue(BusValue *value) const {
 }
 
 /**
- * This is called internally
- * @param eventLoop
+ * This is called internally from the Gate this Connection belongs to
  * @param value
  */
-void Connection::setOutputValue(EventLoop &eventLoop, BusValue value) {
-  // If the value already is correct, then don't propagate as there won't be any changes
+void Connection::setOutputValue(BusValue value) {
+  // TODO: If the value already is correct, then don't propagate as there won't be any changes
+
   // if(m_outputvalue == value) return;
 
   m_outputvalue = value;
@@ -50,18 +49,18 @@ void Connection::setOutputValue(EventLoop &eventLoop, BusValue value) {
     return;
   }
 
-  eventLoop.addBusToRecalculate(m_bus);
+  m_bus->needsRecalculating();
 }
 
 int Connection::direction() const {
   return m_direction;
 }
 
-Gate *Connection::gate() const {
-  return m_gate;
-}
-
-
+/**
+ * Connects a Bus, at a given bit_offset, to this connection.
+ * @param bus
+ * @param bit_offset
+ */
 void Connection::connect(Bus *bus, uint8_t bit_offset) {
 
   assert(size() <= bus->size());

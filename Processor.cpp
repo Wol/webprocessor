@@ -29,11 +29,11 @@ Processor::Processor() :
 void Processor::setInputs(BusValue a, BusValue b, BusValue x, BusValue y, BusValue z)
 {
 
-  A.setOutputValue(eventloop, a);
-  B.setOutputValue(eventloop, b);
-  X.setOutputValue(eventloop, x);
-  Y.setOutputValue(eventloop, y);
-  Z.setOutputValue(eventloop, z);
+  A.setOutputValue(a);
+  B.setOutputValue(b);
+  X.setOutputValue(x);
+  Y.setOutputValue(y);
+  Z.setOutputValue(z);
 }
 
 BusValue Processor::getCarryOutput()

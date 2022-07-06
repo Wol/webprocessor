@@ -11,7 +11,6 @@ typedef uint32_t BusValue;
 
 class Connection;
 class Pin;
-class EventLoop;
 
 class Bus : public CircuitItem {
 
@@ -24,9 +23,9 @@ public:
 
     void addConnection(Connection *connector);
 
-    void update(EventLoop &eventLoop);
+    void update() override;
 
-    uint8_t size() const;
+    [[nodiscard]] uint8_t size() const;
 
     std::string status() override;
 

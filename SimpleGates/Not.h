@@ -2,18 +2,19 @@
 #define PROCESSOR_NOT_H
 
 
-#include "../Gate.h"
+#include "../CircuitItem.h"
+#include "../Connection.h"
 
-class Not : public Gate {
+class Not : public CircuitItem {
 
 public:
     Not(std::string name, CircuitItem *parent);
 
-    void update(EventLoop &eventLoop) override;
+    void update() override;
 
 public:
 
-    Connection A;
+    Connection In;
     Connection Out;
 };
 

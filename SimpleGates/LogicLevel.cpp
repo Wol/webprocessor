@@ -4,23 +4,23 @@
 #include <iostream>
 
 LogicLevel::LogicLevel(std::string  name, CircuitItem *parent, uint8_t size, int direction) :
-        Gate(name, parent),
+        CircuitItem(name, parent),
         IO("IO", this, size),
-        _io(this, size, direction, "IO")
+        _io("IO", this, size, direction)
         {
 
   IO.addInternalConnection(_io);
 
 }
 
-void LogicLevel::update(EventLoop &eventLoop) {
+void LogicLevel::update() {
 
 
 
 }
 
-void LogicLevel::setOutputValue(EventLoop &eventLoop, BusValue i) {
-  _io.setOutputValue(eventLoop, i);
+void LogicLevel::setOutputValue(BusValue i) {
+  _io.setOutputValue(i);
 }
 
 BusValue LogicLevel::getInputValue() {

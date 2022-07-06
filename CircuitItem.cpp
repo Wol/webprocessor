@@ -50,3 +50,13 @@ std::string CircuitItem::status()
   return "[---]\t-";
 }
 
+void CircuitItem::needsRecalculating() {
+
+  Circuit::ItemsToRecalculate.push_back(this);
+
+}
+
+void CircuitItem::update() {
+  // The default implementation is to do nothing.
+}
+

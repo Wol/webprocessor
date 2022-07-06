@@ -5,7 +5,7 @@
 
 
 /**
- * Connects this external facing pin to an internal 'Connection' in a Gate (or another internal Pin)
+ * Connects this external facing pin to an internal 'Connection' in a CircuitItem (or another internal Pin)
  * This doesn't care about which gates it's connected to, only their Connections.
  * @param connection
  */

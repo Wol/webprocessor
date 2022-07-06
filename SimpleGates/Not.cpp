@@ -1,14 +1,15 @@
 #include "Not.h"
+#include "../Connection.h"
 
 
 Not::Not(std::string  name, CircuitItem *parent) :
-        Gate(name, parent),
-        A(this, 1, Connection::Input, "In"),
-        Out(this, 1, Connection::Output, "Out") {
+  CircuitItem(name, parent),
+        In("In", this, 1, Connection::Input),
+        Out("Out", this, 1, Connection::Output) {
 
 
 }
 
-void Not::update(EventLoop &eventLoop) {
-  Out.setOutputValue(eventLoop, !A.getBusValue());
+void Not::update() {
+  Out.setOutputValue(!In.getBusValue());
 }

@@ -33,7 +33,7 @@ ALU::ALU(std::string name, CircuitItem *parent) :
 {
 
 
-  B_Bus_Enable.addInternalConnection(B_Bus_Enable_Not.A);
+  B_Bus_Enable.addInternalConnection(B_Bus_Enable_Not.In);
   B_Bus_Enable_Not.Out.connect(&B_Bus_Enable_Inverted);
 
   // The Subtract pin XOr's (inverts) the B bus
