@@ -4,9 +4,9 @@
 
 NBitAdder::NBitAdder(std::string mName, CircuitItem *mParent, uint8_t size) :
         CircuitItem(mName, mParent),
-        A(size),
-        B(size),
-        Sum(size)
+        A("A", this, size),
+        B("B", this, size),
+        Sum("Sum", this, size)
         {
 
 

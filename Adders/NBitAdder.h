@@ -17,8 +17,8 @@ public:
     Pin B;
     Pin Sum;
 
-    Pin Carry_Out{1};
-    Pin Carry_In{1};
+    Pin Carry_Out{"Carry_Out", this, 1};
+    Pin Carry_In{"Carry_In", this, 1};
 
 private:
 

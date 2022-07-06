@@ -27,7 +27,7 @@ void Circuit::debugAllItems()
 {
 
   for(auto &item: Items) {
-    std::cout << std::left << std::setw(24) << item->status() << " " << item->fullname() << "\n";
+    std::cout << std::left << std::setw(40) << item->status() << " " << item->fullname() << "\n";
   }
 
 }

@@ -13,12 +13,12 @@ class ALU : public CircuitItem {
 public:
     ALU(std::string  name, CircuitItem *parent);
 
-    Pin A{8};
-    Pin B{8};
-    Pin DataBus{8};
+    Pin A{"A", this, 8};
+    Pin B{"B", this, 8};
+    Pin DataBus{"DataBus", this, 8};
 
-    Pin Subtract{1};
-    Pin B_Bus_Enable{1}; // Otherwise B = 1.
+    Pin Subtract{"Subtract", this, 1};
+    Pin B_Bus_Enable{"B_Bus_Enable", this, 1}; // Otherwise B = 1.
 
 
 private:

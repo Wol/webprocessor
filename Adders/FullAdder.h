@@ -19,12 +19,12 @@ public:
 public:
 
 
-    Pin A{1};
-    Pin B{1};
-    Pin Carry_In{1};
+    Pin A{"A", this, 1};
+    Pin B{"B", this, 1};
+    Pin Carry_In{"Carry_In", this, 1};
 
-    Pin Sum{1};
-    Pin Carry_Out{1};
+    Pin Sum{"Sum", this, 1};
+    Pin Carry_Out{"Carry_Out", this, 1};
 
 private:
 

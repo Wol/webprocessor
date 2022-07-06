@@ -5,7 +5,7 @@
 
 LogicLevel::LogicLevel(std::string  name, CircuitItem *parent, uint8_t size, int direction) :
         Gate(name, parent),
-        IO(size),
+        IO("IO", this, size),
         _io(this, size, direction, "IO")
         {
 

@@ -22,17 +22,18 @@ Processor::Processor() :
 {
 
 
-  Z.IO.connect(&a);
+  // Z.IO.connect(&a);
 
 }
 
-void Processor::setInputs(BusValue i, BusValue i1, BusValue i2, BusValue y)
+void Processor::setInputs(BusValue a, BusValue b, BusValue x, BusValue y, BusValue z)
 {
 
-  A.setOutputValue(eventloop, i);
-  B.setOutputValue(eventloop, i1);
-  X.setOutputValue(eventloop, i2);
+  A.setOutputValue(eventloop, a);
+  B.setOutputValue(eventloop, b);
+  X.setOutputValue(eventloop, x);
   Y.setOutputValue(eventloop, y);
+  Z.setOutputValue(eventloop, z);
 }
 
 BusValue Processor::getCarryOutput()

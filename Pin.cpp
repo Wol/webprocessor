@@ -1,6 +1,7 @@
 
 #include <cassert>
 #include "Pin.h"
+#include "Bus.h"
 
 
 /**
@@ -35,6 +36,10 @@ void Pin::addInternalPin(Pin &pin, uint8_t bit_offset) {
  */
 void Pin::connect(Bus *bus, uint8_t bit_offset) {
 
+  assert(m_bus == nullptr);
+
+  m_bus = bus;
+
   for(auto pin: m_pins) {
     // .first is the pointer to the pin we want to connect
     // .second is the bit offset within the bus this pin should look at
@@ -50,7 +55,14 @@ void Pin::connect(Bus *bus, uint8_t bit_offset) {
 
 }
 
-Pin::Pin(uint8_t mSize) : m_size(mSize) {
+std::string Pin::status()
+{
+  return "[PIN]\t" + (m_bus ? "Connected to bus " + m_bus->fullname() : "Disconnected");
+
+}
+
+Pin::Pin(const std::string &mName, CircuitItem *mParent, uint8_t mSize) : CircuitItem(mName, mParent), m_size(mSize)
+{
 
 
 }

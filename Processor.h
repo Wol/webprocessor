@@ -7,7 +7,7 @@
 #include "SimpleGates/And.h"
 #include "SimpleGates/LogicLevel.h"
 #include "Adders/FullAdder.h"
-#include "Adders/EightBitAdder.h"
+#include "Adders/NBitAdder.h"
 #include "Adders/ALU.h"
 
 class Processor : public Circuit {
@@ -36,7 +36,7 @@ public:
 
 
 
-    void setInputs(BusValue i, BusValue i1, BusValue x, BusValue y);
+    void setInputs(BusValue i, BusValue i1, BusValue x, BusValue y, BusValue z);
 
     // So what does a processor consist of.
 

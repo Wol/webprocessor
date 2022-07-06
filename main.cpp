@@ -14,19 +14,32 @@ int main() {
   BusValue enable_b = 1;
 
 //
-//  for (i = 0; i <= 255; i+=5) {
-//    for (j = 0; j <= 255; j+=5) {
+  for (i = 0; i <= 255; i+=5) {
+    for (j = 0; j <= 255; j+=5) {
+      for (sub = 0; sub < 2; ++sub) {
+        for (enable_b = 0; enable_b < 2; ++enable_b) {
 
-      p.setInputs(i, j, sub, enable_b);
-      p.tick();
-      std::cout << "I1: " << i << " I2: " << j << "   Out: " << p.getSumOutput()  << " " << "\n";
+          p.setInputs(i, j, sub, enable_b, 0);
+          p.tick();
+
+          uint8_t expected = (i) + ( sub ? -1 : 1) * (enable_b ? j : 1);
+
+          if(expected != p.getSumOutput()){
+            std::cout << " " << i << " " << (sub == 0 ? "+" : "-") << " " << (enable_b ? j : 1) << " = " << p.getSumOutput()  << " " << (expected == p.getSumOutput()) << "\n";
+            Circuit::debugAllItems();
+          }
 
 
-//      Circuit::debugAllItems();
+
+
+        }
+      }
 
 //
-//    }
-//  }
+
+//
+    }
+  }
 
 
 //  p.setInputs(1, 1);output value f

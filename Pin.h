@@ -9,11 +9,11 @@
  * A Pin is a Proxy for multiple connections. This is used when a "Gate" contains multiple "Gates", where an external
  * pin/connection connects to multiple Gates internally.
  */
-class Pin {
+class Pin : public CircuitItem {
 
 public:
 
-    Pin(uint8_t mSize);
+    Pin(const std::string &mName, CircuitItem *mParent, uint8_t mSize);
 
 
     void addInternalConnection(Connection &connection, uint8_t bit_offset = 0);
@@ -24,6 +24,8 @@ public:
     [[nodiscard]] uint8_t size() const {
       return m_size;
     }
+
+    std::string status() override;
 
 
 private:
@@ -37,6 +39,8 @@ private:
     // Pin > Pin wirings, we keep two separate lists here.
     std::map<Pin *, uint8_t> m_pins;
 
+
+    Bus *m_bus = nullptr;
 
     uint8_t m_size = 0;
 
