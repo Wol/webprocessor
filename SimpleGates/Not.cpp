@@ -7,7 +7,7 @@ Not::Not(std::string  name, CircuitItem *parent) :
         In("In", this, 1, Connection::Input),
         Out("Out", this, 1, Connection::Output) {
 
-
+  needsRecalculating();
 }
 
 void Not::update() {

@@ -14,6 +14,7 @@ int main() {
 
 //
   for (i = 0; i <= 255; i+=5) {
+    std::cout << "\n";
     for (j = 0; j <= 255; j+=5) {
       for (sub = 0; sub < 2; ++sub) {
         for (enable_b = 0; enable_b < 2; ++enable_b) {
@@ -23,26 +24,19 @@ int main() {
 
           uint8_t expected = (i) + ( sub ? -1 : 1) * (enable_b ? j : 1);
 
-          if(true || (expected != p.getSumOutput())){
-            std::cout << " " << i << " " << (sub == 0 ? "+" : "-") << " " << (enable_b ? j : 1) << " = " << p.getSumOutput()  << " " << (expected == p.getSumOutput()) << "\n";
+          if((expected != p.getSumOutput())){
+            std::cout << "Wrong!!!!" << i << " " << (sub == 0 ? "+" : "-") << " " << (enable_b ? j : 1) << " = " << p.getSumOutput()  << " " << (expected == p.getSumOutput()) << "\n";
             Circuit::debugAllItems();
+          } else {
+            std::cout << "✓";
           }
-
 
 
 
         }
       }
-
-//
-
-//
     }
   }
 
-
-//  p.setInputs(1, 1);output value f
-//  p.tick();
-//  std::cout << "I1: " << 1 << " I2: " << 1 << " Out: " << p.getOutput() << "\n";
 
 }

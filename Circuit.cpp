@@ -31,7 +31,7 @@ Circuit::Circuit(std::string mName) : CircuitItem(std::move(mName), nullptr) {
 void Circuit::debugAllItems() {
 
   for (auto &item: Items) {
-    std::cout << std::left << std::setw(40) << item->status() << " " << item->fullname() << "\n";
+    std::cout << std::left << std::setw(50) << item->status() << " " << item->fullname() << "\n";
   }
 
 }
