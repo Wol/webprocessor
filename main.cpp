@@ -38,5 +38,8 @@ int main() {
     }
   }
 
+  std::cout << "\n";
+  Circuit::debugAllItems();
+
 
 }
